@@ -10,7 +10,7 @@ module.exports = (grunt) ->
     coffee:
       compile:
         files:
-          'public/dist/main.js': 'scripts/main.coffee'
+          'public/dist/main.js': ['scripts/main.coffee', 'scripts/sub1.coffee']
   }
 
   # Load the plugin that provides the "coffee" task.
