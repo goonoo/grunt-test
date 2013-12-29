@@ -4,7 +4,7 @@ module.exports = (grunt) ->
     watch:
       scripts:
         files: ['scripts/**']
-        tasks: ['coffee', 'concat']
+        tasks: ['default']
         options:
           spawn: false
     coffee:
@@ -15,6 +15,14 @@ module.exports = (grunt) ->
       dist:
         src: ['scripts/lib/jquery-1.10.2.min.js', 'public/dist/coffee.js']
         dest: 'public/dist/main.js'
+    rename:
+      compile:
+        files:
+          'public/dist/main-uncompressed.js': 'public/dist/main.js'
+    uglify:
+      dist:
+        files:
+          'public/dist/main.js': 'public/dist/main-uncompressed.js'
   }
 
   # Load the plugin that provides the "coffee" task.
@@ -26,5 +34,12 @@ module.exports = (grunt) ->
   # Load the plugin that provides the "concat" task.
   grunt.loadNpmTasks('grunt-contrib-concat')
 
+  # Load the plugin that provides the "rename" task.
+  grunt.loadNpmTasks('grunt-rename')
+
+  # Load the plugin that provides the "uglify" task.
+  grunt.loadNpmTasks('grunt-contrib-uglify')
+
   # Default task(s).
-  # grunt.registerTask('default', ['uglify']);
+  grunt.registerTask('default', ['coffee', 'concat'])
+  grunt.registerTask('dist', ['default', 'rename', 'uglify'])
