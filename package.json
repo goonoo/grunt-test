@@ -10,6 +10,7 @@
   "license": "BSD-2-Clause",
   "devDependencies": {
     "grunt": "~0.4.2",
-    "grunt-contrib-coffee": "~0.8.0"
+    "grunt-contrib-coffee": "~0.8.0",
+    "grunt-contrib-watch": "~0.5.3"
   }
 }
